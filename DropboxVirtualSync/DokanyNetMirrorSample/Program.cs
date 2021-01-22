@@ -10,7 +10,7 @@ namespace DokanNetMirror
         private const string MountKey = "-where";
         private const string UseUnsafeKey = "-unsafe";
 
-        private static void Main(string[] args)
+        public static void DokanyMain(string[] args)
         {
             try
             {
@@ -20,11 +20,11 @@ namespace DokanNetMirror
 
                 var mirrorPath = arguments.ContainsKey(MirrorKey)
                    ? arguments[MirrorKey] as string
-                   : @"C:\";
+                   : @"\\w2k3nas1\EngData\Admin\Windows Common\Libraries";
 
                 var mountPath = arguments.ContainsKey(MountKey)
                    ? arguments[MountKey] as string
-                   : @"N:\";
+                   : @"D:\Dropbox\Backups\TI Backups\Test Mirror";
 
                 var unsafeReadWrite = arguments.ContainsKey(UseUnsafeKey);
 
