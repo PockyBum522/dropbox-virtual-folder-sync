@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jared\\RiderProjects\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj": {}
+    "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jared\\RiderProjects\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj": {
+    "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jared\\RiderProjects\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj",
+        "projectUniqueName": "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj",
         "projectName": "DropboxVirtualSync",
-        "projectPath": "C:\\Users\\jared\\RiderProjects\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj",
-        "packagesPath": "C:\\Users\\jared\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jared\\RiderProjects\\DropboxVirtualSync\\DropboxVirtualSync\\obj\\",
+        "projectPath": "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj",
+        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
-          "C:\\Users\\jared\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
