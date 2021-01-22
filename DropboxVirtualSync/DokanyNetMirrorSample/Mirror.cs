@@ -5,24 +5,27 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
-using System.Windows.Documents;
 using DokanNet;
 using DokanNet.Logging;
 using static DokanNet.FormatProviders;
 using FileAccess = DokanNet.FileAccess;
 
-namespace DokanNetMirror
+namespace DropboxVirtualSync.DokanyNetMirrorSample
 {
     internal class Mirror : IDokanOperations
     {
-        private readonly string path;
+        private readonly string _path;
 
-        private const FileAccess DataAccess = FileAccess.ReadData | FileAccess.WriteData | FileAccess.AppendData |
+        private const FileAccess DataAccess = FileAccess.ReadData | 
+                                              FileAccess.WriteData | 
+                                              FileAccess.AppendData |
                                               FileAccess.Execute |
-                                              FileAccess.GenericExecute | FileAccess.GenericWrite |
+                                              FileAccess.GenericExecute | 
+                                              FileAccess.GenericWrite |
                                               FileAccess.GenericRead;
 
-        private const FileAccess DataWriteAccess = FileAccess.WriteData | FileAccess.AppendData |
+        private const FileAccess DataWriteAccess = FileAccess.WriteData | 
+                                                   FileAccess.AppendData |
                                                    FileAccess.Delete |
                                                    FileAccess.GenericWrite;
 
@@ -32,12 +35,12 @@ namespace DokanNetMirror
         {
             if (!Directory.Exists(path))
                 throw new ArgumentException(nameof(path));
-            this.path = path;
+            this._path = path;
         }
 
         protected string GetPath(string fileName)
         {
-            return path + fileName;
+            return _path + fileName;
         }
 
         protected NtStatus Trace(string method, string fileName, IDokanFileInfo info, NtStatus result,
@@ -69,8 +72,7 @@ namespace DokanNetMirror
 
         #region Implementation of IDokanOperations
 
-        public NtStatus CreateFile(string fileName, FileAccess access, FileShare share, FileMode mode,
-            FileOptions options, FileAttributes attributes, IDokanFileInfo info)
+        public NtStatus CreateFile(string fileName, FileAccess access, FileShare share, FileMode mode, FileOptions options, FileAttributes attributes, IDokanFileInfo info)
         {
             var result = DokanResult.Success;
             var filePath = GetPath(fileName);
@@ -99,7 +101,7 @@ namespace DokanNetMirror
                                     attributes, DokanResult.PathNotFound);
                             }
 
-                            new DirectoryInfo(filePath).EnumerateFileSystemInfos().Any();
+                            new DirectoryInfo(filePath).EnumerateFileSystemInfos(); //.Any();
                             // you can't list the directory
                             break;
 
@@ -110,7 +112,10 @@ namespace DokanNetMirror
 
                             try
                             {
-                                File.GetAttributes(filePath).HasFlag(FileAttributes.Directory);
+                                var fileAttributes = File.GetAttributes(filePath); 
+                                
+                                _ = fileAttributes.HasFlag(FileAttributes.Directory);
+                                
                                 return Trace(nameof(CreateFile), fileName, info, access, share, mode, options,
                                     attributes, DokanResult.AlreadyExists);
                             }
@@ -200,11 +205,11 @@ namespace DokanNetMirror
                     bool fileCreated = mode == FileMode.CreateNew || mode == FileMode.Create || (!pathExists && mode == FileMode.OpenOrCreate);
                     if (fileCreated)
                     {
-                        FileAttributes new_attributes = attributes;
-                        new_attributes |= FileAttributes.Archive; // Files are always created as Archive
+                        FileAttributes newAttributes = attributes;
+                        newAttributes |= FileAttributes.Archive; // Files are always created as Archive
                         // FILE_ATTRIBUTE_NORMAL is override if any other attribute is set.
-                        new_attributes &= ~FileAttributes.Normal;
-                        File.SetAttributes(filePath, new_attributes);
+                        newAttributes &= ~FileAttributes.Normal;
+                        File.SetAttributes(filePath, newAttributes);
                     }
                 }
                 catch (UnauthorizedAccessException) // don't have access rights
@@ -237,8 +242,7 @@ namespace DokanNetMirror
                     }
                 }
             }
-            return Trace(nameof(CreateFile), fileName, info, access, share, mode, options, attributes,
-                result);
+            return Trace(nameof(CreateFile), fileName, info, access, share, mode, options, attributes, result);
         }
 
         public void Cleanup(string fileName, IDokanFileInfo info)
@@ -306,15 +310,7 @@ namespace DokanNetMirror
             var append = offset == -1;
             if (info.Context == null)
             {
-                using (var stream = new FileStream(GetPath(fileName), append ? FileMode.Append : FileMode.Open, System.IO.FileAccess.Write))
-                {
-                    if (!append) // Offset of -1 is an APPEND: https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
-                    {
-                        stream.Position = offset;
-                    }
-                    stream.Write(buffer, 0, buffer.Length);
-                    bytesWritten = buffer.Length;
-                }
+                bytesWritten = WriteFileWithoutContext(fileName, buffer, offset, append);
             }
             else
             {
@@ -330,6 +326,7 @@ namespace DokanNetMirror
                         else
                         {
                             bytesWritten = 0;
+                            
                             return Trace(nameof(WriteFile), fileName, info, DokanResult.Error, "out " + bytesWritten,
                                 offset.ToString(CultureInfo.InvariantCulture));
                         }
@@ -342,8 +339,26 @@ namespace DokanNetMirror
                 }
                 bytesWritten = buffer.Length;
             }
+            
             return Trace(nameof(WriteFile), fileName, info, DokanResult.Success, "out " + bytesWritten.ToString(),
                 offset.ToString(CultureInfo.InvariantCulture));
+        }
+
+        private int WriteFileWithoutContext(string fileName, byte[] buffer, long offset, bool append)
+        {
+            using var stream = new FileStream(GetPath(fileName), append ? FileMode.Append : FileMode.Open,
+                System.IO.FileAccess.Write);
+
+            if (!append
+            ) // Offset of -1 is an APPEND: https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+            {
+                stream.Position = offset;
+            }
+
+            stream.Write(buffer, 0, buffer.Length);
+            var bytesWritten = buffer.Length;
+
+            return bytesWritten;
         }
 
         public NtStatus FlushFileBuffers(string fileName, IDokanFileInfo info)
@@ -597,7 +612,7 @@ namespace DokanNetMirror
 
         public NtStatus GetDiskFreeSpace(out long freeBytesAvailable, out long totalNumberOfBytes, out long totalNumberOfFreeBytes, IDokanFileInfo info)
         {
-            var dinfo = DriveInfo.GetDrives().Single(di => string.Equals(di.RootDirectory.Name, Path.GetPathRoot(path + "\\"), StringComparison.OrdinalIgnoreCase));
+            var dinfo = DriveInfo.GetDrives().Single(di => string.Equals(di.RootDirectory.Name, Path.GetPathRoot(_path + "\\"), StringComparison.OrdinalIgnoreCase));
 
             freeBytesAvailable = dinfo.TotalFreeSpace;
             totalNumberOfBytes = dinfo.TotalSize;

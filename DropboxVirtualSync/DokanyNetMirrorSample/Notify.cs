@@ -1,22 +1,22 @@
 ﻿using System.IO;
 using DokanNet;
 
-namespace DokanNetMirror
+namespace DropboxVirtualSync.DokanyNetMirrorSample
 {
     internal static class Notify
     {
-        private static string sourcePath;
-        private static string targetPath;
-        private static FileSystemWatcher commonFsWatcher;
-        private static FileSystemWatcher fileFsWatcher;
-        private static FileSystemWatcher dirFsWatcher;
+        private static string _sourcePath;
+        private static string _targetPath;
+        private static FileSystemWatcher _commonFsWatcher;
+        private static FileSystemWatcher _fileFsWatcher;
+        private static FileSystemWatcher _dirFsWatcher;
 
         public static void Start(string mirrorPath, string mountPath)
         {
-            sourcePath = mirrorPath;
-            targetPath = mountPath;
+            _sourcePath = mirrorPath;
+            _targetPath = mountPath;
 
-            commonFsWatcher = new FileSystemWatcher(mirrorPath)
+            _commonFsWatcher = new FileSystemWatcher(mirrorPath)
             {
                 IncludeSubdirectories = true,
                 NotifyFilter = NotifyFilters.Attributes |
@@ -29,38 +29,38 @@ namespace DokanNetMirror
                     NotifyFilters.Size
             };
 
-            commonFsWatcher.Changed += OnCommonFileSystemWatcherChanged;
-            commonFsWatcher.Created += OnCommonFileSystemWatcherCreated;
-            commonFsWatcher.Renamed += OnCommonFileSystemWatcherRenamed;
+            _commonFsWatcher.Changed += OnCommonFileSystemWatcherChanged;
+            _commonFsWatcher.Created += OnCommonFileSystemWatcherCreated;
+            _commonFsWatcher.Renamed += OnCommonFileSystemWatcherRenamed;
 
-            commonFsWatcher.EnableRaisingEvents = true;
+            _commonFsWatcher.EnableRaisingEvents = true;
 
-            fileFsWatcher = new FileSystemWatcher(mirrorPath)
+            _fileFsWatcher = new FileSystemWatcher(mirrorPath)
             {
                 IncludeSubdirectories = true,
                 NotifyFilter = NotifyFilters.FileName
             };
 
-            fileFsWatcher.Deleted += OnCommonFileSystemWatcherFileDeleted;
+            _fileFsWatcher.Deleted += OnCommonFileSystemWatcherFileDeleted;
 
-            fileFsWatcher.EnableRaisingEvents = true;
+            _fileFsWatcher.EnableRaisingEvents = true;
 
-            dirFsWatcher = new FileSystemWatcher(mirrorPath)
+            _dirFsWatcher = new FileSystemWatcher(mirrorPath)
             {
                 IncludeSubdirectories = true,
                 NotifyFilter = NotifyFilters.DirectoryName
             };
 
-            dirFsWatcher.Deleted += OnCommonFileSystemWatcherDirectoryDeleted;
+            _dirFsWatcher.Deleted += OnCommonFileSystemWatcherDirectoryDeleted;
 
-            dirFsWatcher.EnableRaisingEvents = true;
+            _dirFsWatcher.EnableRaisingEvents = true;
         }
 
         private static string AlterPathToMountPath(string path)
         {
-            var relativeMirrorPath = path.Substring(sourcePath.Length).TrimStart('\\');
+            var relativeMirrorPath = path.Substring(_sourcePath.Length).TrimStart('\\');
 
-            return Path.Combine(targetPath, relativeMirrorPath);
+            return Path.Combine(_targetPath, relativeMirrorPath);
         }
 
         private static void OnCommonFileSystemWatcherFileDeleted(object sender, FileSystemEventArgs e)

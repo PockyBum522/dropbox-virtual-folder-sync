@@ -1,18 +1,18 @@
 ﻿using System;
+using DropboxVirtualSync.Views;
 
-namespace DropboxVirtualSync
+namespace DropboxVirtualSync.Logistics
 {
     public class LazyLocalization
     {
-        private MainWindow _mainWindow;
+        private readonly MainWindow _mainWindow;
 
         public LazyLocalization(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
-            AddTextBoxPrefillPerUsername();
         }
 
-        private void AddTextBoxPrefillPerUsername()
+        internal void AddTextBoxPrefillPerUsername()
         {
             var userName = Environment.UserName;
 
@@ -20,6 +20,12 @@ namespace DropboxVirtualSync
             {
                 _mainWindow.SourcePathTextBox.Text = @"\\w2k3nas1\EngData\Admin\Windows Common\Libraries";
                 _mainWindow.DestinationPathTextBox.Text = @"D:\Dropbox\Backups\TI Backups\Test Mirror";
+            }      
+            
+            if (userName == "jmash")
+            {
+                _mainWindow.SourcePathTextBox.Text = @"HI JURRRRRD";
+                _mainWindow.DestinationPathTextBox.Text = @"yo momma";
             }
         }
     }

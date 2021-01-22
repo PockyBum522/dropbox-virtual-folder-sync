@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using DokanNet;
 using Microsoft.Win32.SafeHandles;
 
-namespace DokanNetMirror
+namespace DropboxVirtualSync.DokanyNetMirrorSample
 {
     /// <summary>
     /// Implementation of IDokanOperationsUnsafe to demonstrate usage.
@@ -88,7 +88,7 @@ namespace DokanNetMirror
         {
             public static void SetFilePointer(SafeFileHandle fileHandle, long offset)
             {
-                if (!SetFilePointerEx(fileHandle, offset, IntPtr.Zero, FILE_BEGIN))
+                if (!SetFilePointerEx(fileHandle, offset, IntPtr.Zero, FileBegin))
                 {
                     throw new Win32Exception();
                 }
@@ -110,7 +110,7 @@ namespace DokanNetMirror
                 }
             }
 
-            private const uint FILE_BEGIN = 0;
+            private const uint FileBegin = 0;
 
             [DllImport("kernel32.dll", SetLastError = true)]
             private static extern bool SetFilePointerEx(SafeFileHandle hFile, long liDistanceToMove, IntPtr lpNewFilePointer, uint dwMoveMethod);
