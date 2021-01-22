@@ -10,4 +10,8 @@
       <Folder Include="DokanyNetMirrorSample" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="DokanNet" Version="1.4.0" />
+    </ItemGroup>
+
 </Project>
