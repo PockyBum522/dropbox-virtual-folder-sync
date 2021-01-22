@@ -47,6 +47,10 @@
             "DokanNet": {
               "target": "Package",
               "version": "[1.4.0, )"
+            },
+            "System.IO.FileSystem.AccessControl": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

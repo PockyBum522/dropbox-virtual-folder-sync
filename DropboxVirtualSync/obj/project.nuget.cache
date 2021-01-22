@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "RPh6InACJhXYw6fXiQTqOX4iy9MHikHsaXaGHS2DVBL8l3eOPpaI5KRta4a5jtg/HYuAoCKhlVPRdPD4WUCokQ==",
+  "dgSpecHash": "3ySyYjBdKYqODEevzZ1VRMksef1JBgQD2NEdsF3Fdku5GBj+6WNldhnTsalJmZK68W+KGHv0wa8aATXHOpSV5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\David\\Documents\\GitHub\\DropboxVirtualSync\\DropboxVirtualSync\\DropboxVirtualSync.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\David\\.nuget\\packages\\dokannet\\1.4.0\\dokannet.1.4.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\system.io.filesystem.accesscontrol\\4.7.0\\system.io.filesystem.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
