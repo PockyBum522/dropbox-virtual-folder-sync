@@ -1,0 +1,3 @@
+﻿Let's aim for a proof of concept that has two text boxes, one with a path to a empty folder in dropbox, 
+and one with a path to a (presumably) not empty folder outside of dropbox.
+And two buttons, one to start the mirroring, and one to stop.
