@@ -7,12 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DokanyNetMirrorSample" />
+      <PackageReference Include="DokanNet" Version="1.4.0" />
+      <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="DokanNet" Version="1.4.0" />
-      <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
+      <ApplicationDefinition Remove="App.xaml" />
+      <ApplicationDefinition Include="Views\App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+      </ApplicationDefinition>
     </ItemGroup>
 
 </Project>

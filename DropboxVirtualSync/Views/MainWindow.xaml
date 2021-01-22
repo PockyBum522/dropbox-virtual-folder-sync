@@ -18,12 +18,12 @@
         </Grid.RowDefinitions>
         
         <!-- Buttons -->
-        <Button Grid.Row="0" Grid.Column="1" Height="50" Width="100" Content="Start Mirror"/>
-        <Button Grid.Row="1" Grid.Column="1" Height="50" Width="100" Content="Stop Mirror"/>
+        <Button x:Name="MirrorStartButton" Click="MirrorStartButton_OnClick" Grid.Row="0" Grid.Column="1" Height="50" Width="100" Content="Start Mirror"/>
+        <Button x:Name="MirrorStopButton" Click="MirrorStopButton_OnClick" Grid.Row="1" Grid.Column="1" Height="50" Width="100" Content="Stop Mirror"/>
         
         <!-- Textboxen -->
-        <TextBox Grid.Row="0" Grid.Column="0"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="0"></TextBox>
+        <TextBox x:Name="SourcePathTextBox" Grid.Row="0" Grid.Column="0"></TextBox>
+        <TextBox x:Name="DestinationPathTextBox" Grid.Row="1" Grid.Column="0"></TextBox>
         
     </Grid>
 </Window>
