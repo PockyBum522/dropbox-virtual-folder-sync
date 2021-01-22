@@ -1,14 +1,15 @@
 using System;
 using DokanNet;
+using DropboxVirtualSync.Dokany.Dependencies;
 using DropboxVirtualSync.Views;
 
-namespace DropboxVirtualSync.DokanyNetMirrorSample
+namespace DropboxVirtualSync.Dokany
 {
-    internal class DoakanyProgram
+    internal class MirrorSample
     {
         private readonly MainWindow _mainWindow;
 
-        public DoakanyProgram(MainWindow mainWindow)
+        public MirrorSample(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
         }

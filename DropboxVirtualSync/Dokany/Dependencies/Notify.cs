@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using DokanNet;
 
-namespace DropboxVirtualSync.DokanyNetMirrorSample
+namespace DropboxVirtualSync.Dokany.Dependencies
 {
     internal static class Notify
     {

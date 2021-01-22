@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
-namespace DropboxVirtualSync.DokanyNetMirrorSample
+namespace DropboxVirtualSync.Dokany.Dependencies
 {
     public static class NativeMethods
     {

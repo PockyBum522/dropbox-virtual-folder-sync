@@ -10,7 +10,7 @@ using DokanNet.Logging;
 using static DokanNet.FormatProviders;
 using FileAccess = DokanNet.FileAccess;
 
-namespace DropboxVirtualSync.DokanyNetMirrorSample
+namespace DropboxVirtualSync.Dokany.Dependencies
 {
     internal class Mirror : IDokanOperations
     {

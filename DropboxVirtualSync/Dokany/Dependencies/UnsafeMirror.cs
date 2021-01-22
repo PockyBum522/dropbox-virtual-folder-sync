@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using DokanNet;
 using Microsoft.Win32.SafeHandles;
 
-namespace DropboxVirtualSync.DokanyNetMirrorSample
+namespace DropboxVirtualSync.Dokany.Dependencies
 {
     /// <summary>
     /// Implementation of IDokanOperationsUnsafe to demonstrate usage.
@@ -34,6 +34,9 @@ namespace DropboxVirtualSync.DokanyNetMirrorSample
             else // normal read
             {
                 var stream = info.Context as FileStream;
+
+                if (stream == null) throw new FileLoadException("stream was null");
+                    
                 lock (stream) //Protect from overlapped read
                 {
                     DoRead(stream, buffer, bufferLength, out bytesRead, offset);
