@@ -1,4 +1,6 @@
-﻿namespace DropboxVirtualSync
+﻿using System;
+
+namespace DropboxVirtualSync
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -7,6 +9,8 @@
     {
         public MainWindow()
         {
+            
+            
             InitializeComponent();
         }
     }

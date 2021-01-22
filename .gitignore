@@ -31,6 +31,9 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+*/bin/*
+*/obj/*
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 .idea/
@@ -349,5 +352,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+*.cache
 *.cache
 *.cache
