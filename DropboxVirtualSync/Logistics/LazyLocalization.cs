@@ -8,8 +8,8 @@ namespace DropboxVirtualSync
 
         public LazyLocalization(MainWindow mainWindow)
         {
-            AddTextBoxPrefillPerUsername();
             _mainWindow = mainWindow;
+            AddTextBoxPrefillPerUsername();
         }
 
         private void AddTextBoxPrefillPerUsername()
