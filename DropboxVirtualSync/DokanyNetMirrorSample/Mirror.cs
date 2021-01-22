@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
+using System.Windows.Documents;
 using DokanNet;
 using DokanNet.Logging;
 using static DokanNet.FormatProviders;
@@ -626,9 +627,15 @@ namespace DokanNetMirror
 #if !NETCOREAPP1_0
             try
             {
+                // Attempted update for core
                 security = info.IsDirectory
-                    ? (FileSystemSecurity)Directory.GetAccessControl(GetPath(fileName))
-                    : File.GetAccessControl(GetPath(fileName));
+                    ? (FileSystemSecurity)new DirectoryInfo(GetPath(fileName)).GetAccessControl()
+                    : new FileInfo(GetPath(fileName)).GetAccessControl();
+                
+                    // Old Doakany not compatible with .net core:
+                    //info.IsDirectory
+                    //? (FileSystemSecurity)Directory.GetAccessControl(GetPath(fileName))
+                    //: File.GetAccessControl(GetPath(fileName));
                 return Trace(nameof(GetFileSecurity), fileName, info, DokanResult.Success, sections.ToString());
             }
             catch (UnauthorizedAccessException)
@@ -651,11 +658,20 @@ namespace DokanNetMirror
             {
                 if (info.IsDirectory)
                 {
-                    Directory.SetAccessControl(GetPath(fileName), (DirectorySecurity)security);
+                    var directoryInfo = new DirectoryInfo(GetPath(fileName));
+                        
+                    directoryInfo.SetAccessControl((DirectorySecurity)security);
+                        // Old:
+                    //Directory.SetAccessControl(GetPath(fileName), (DirectorySecurity)security);
                 }
                 else
                 {
-                    File.SetAccessControl(GetPath(fileName), (FileSecurity)security);
+                    var fileInfo = new FileInfo(GetPath(fileName));
+                    
+                    fileInfo.SetAccessControl((FileSecurity)security);                    
+
+                    // Old: 
+                    // File.SetAccessControl(GetPath(fileName), (FileSecurity)security);
                 }
                 return Trace(nameof(SetFileSecurity), fileName, info, DokanResult.Success, sections.ToString());
             }
