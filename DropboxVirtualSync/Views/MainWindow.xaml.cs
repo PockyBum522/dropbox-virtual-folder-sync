@@ -37,5 +37,14 @@ namespace DropboxVirtualSync.Views
             _lazyLocalization = new LazyLocalization(this);
             _lazyLocalization.AddTextBoxPrefillPerUsername();
         }
+
+        private void SwapTextboxButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var originalDestinationText = DestinationPathTextBox.Text;
+            
+            DestinationPathTextBox.Text = SourcePathTextBox.Text;
+
+            SourcePathTextBox.Text = originalDestinationText;
+        }
     }
 }

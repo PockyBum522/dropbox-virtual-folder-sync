@@ -12,18 +12,25 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
         
         <!-- Buttons -->
-        <Button x:Name="MirrorStartButton" Click="MirrorStartButton_OnClick" Grid.Row="0" Grid.Column="1" Height="50" Width="100" Content="Start Mirror"/>
-        <Button x:Name="MirrorStopButton" Click="MirrorStopButton_OnClick" Grid.Row="1" Grid.Column="1" Height="50" Width="100" Content="Stop Mirror"/>
+        <Button x:Name="MirrorStartButton" Click="MirrorStartButton_OnClick" Grid.Row="1" Grid.Column="1" Height="50" Width="100" Content="Start Mirror"/>
+        <Button x:Name="MirrorStopButton" Click="MirrorStopButton_OnClick" Grid.Row="3" Grid.Column="1" Height="50" Width="100" Content="Stop Mirror"/>
+        <Button x:Name="SwapTextboxButton" Click="SwapTextboxButton_OnClick" Grid.Row="5" Grid.Column="1" Height="50" Width="100" Content="Swap Paths"/>
         
         <!-- Textboxen -->
-        <TextBox x:Name="SourcePathTextBox" Grid.Row="0" Grid.Column="0"></TextBox>
-        <TextBox x:Name="DestinationPathTextBox" Grid.Row="1" Grid.Column="0"></TextBox>
+        <TextBox x:Name="SourcePathTextBox" Grid.Row="2" Grid.Column="0" Margin="10"></TextBox>
+        <TextBox x:Name="DestinationPathTextBox" Grid.Row="4" Grid.Column="0" Margin="10"></TextBox>
         
     </Grid>
 </Window>

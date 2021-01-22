@@ -24,7 +24,7 @@ namespace DropboxVirtualSync.Dokany
 
                 Notify.Start(mirrorPath, mountPath);
 
-                var mirror = StartUnsafeMirror(mirrorPath);  // Safe mirror: new Mirror(mirrorPath);
+                var mirror = new Mirror(mirrorPath); //StartUnsafeMirror(mirrorPath);  // Safe mirror: new Mirror(mirrorPath);
                 
                 mirror.Mount(mountPath, DokanOptions.DebugMode | DokanOptions.EnableNotificationAPI, 5);
 
