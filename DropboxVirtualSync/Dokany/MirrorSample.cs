@@ -20,13 +20,13 @@ namespace DropboxVirtualSync.Dokany
             {
                 var mirrorPath = _mainWindow.SourcePathTextBox.Text;
 
-                var mountPath = _mainWindow.SourcePathTextBox.Text;
+                var mountPath = _mainWindow.DestinationPathTextBox.Text;
 
                 Notify.Start(mirrorPath, mountPath);
 
-                var mirror = new Mirror(mirrorPath); //StartUnsafeMirror(mirrorPath);  // Safe mirror: new Mirror(mirrorPath);
+                var mirror = StartUnsafeMirror(mirrorPath);  // Safe mirror: new Mirror(mirrorPath);
                 
-                mirror.Mount(mountPath, DokanOptions.DebugMode | DokanOptions.EnableNotificationAPI, 5);
+                mirror.Mount(mountPath, DokanOptions.MountManager, 1);
 
                 Console.WriteLine(@"Success");
             }

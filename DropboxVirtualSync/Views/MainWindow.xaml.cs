@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using DropboxVirtualSync.Dokany;
 using DropboxVirtualSync.Logistics;
 
@@ -11,11 +12,13 @@ namespace DropboxVirtualSync.Views
     public partial class MainWindow
     {
         private LazyLocalization _lazyLocalization;
+        private readonly MainWindowLogic _mainWindowLogic;
 
         public MainWindow()
         {
             InitializeComponent();
             PrefillTextboxesPerLocalUsername();
+            _mainWindowLogic = new MainWindowLogic();
         }
 
         private void MirrorStartButton_OnClick(object sender, RoutedEventArgs e)
@@ -40,11 +43,17 @@ namespace DropboxVirtualSync.Views
 
         private void SwapTextboxButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var originalDestinationText = DestinationPathTextBox.Text;
-            
-            DestinationPathTextBox.Text = SourcePathTextBox.Text;
+            MainWindowLogic.SwitchTextContents(SourcePathTextBox, DestinationPathTextBox);
+        }
 
-            SourcePathTextBox.Text = originalDestinationText;
+        private void BrowseSourceButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BrowseDestinationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

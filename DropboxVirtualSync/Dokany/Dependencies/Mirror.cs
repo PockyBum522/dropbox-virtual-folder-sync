@@ -35,6 +35,7 @@ namespace DropboxVirtualSync.Dokany.Dependencies
         {
             if (!Directory.Exists(path))
                 throw new ArgumentException(nameof(path));
+            
             this._path = path;
         }
 
