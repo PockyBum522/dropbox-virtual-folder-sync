@@ -1,4 +1,4 @@
-﻿namespace DropboxVirtualSync
+﻿namespace DropboxVirtualSync.Views
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,0 +1,46 @@
+﻿<Window x:Class="DropboxVirtualSync.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        
+        <!-- Grid -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <!-- Buttons -->
+        <Button x:Name="MirrorStartButton" Click="MirrorStartButton_OnClick" Grid.Row="1" Grid.Column="3" Height="30" Width="100" Content="Start Mirror"/>
+        <Button IsEnabled="False" x:Name="MirrorStopButton"  Click="MirrorStopButton_OnClick"  Grid.Row="3" Grid.Column="3" Height="30" Width="100" Content="Stop Mirror"/>
+        <Button x:Name="SwapTextboxButton" Click="SwapTextboxButton_OnClick" Grid.Row="5" Grid.Column="3" Height="30" Width="100" Content="Swap Paths"/>
+        
+        <Button IsEnabled="False" x:Name="BrowseSourceButton"      Click="BrowseSourceButton_OnClick"      Grid.Row="2" Grid.Column="1" Height="30" Width="70" Content="Browse"/>
+        <Button IsEnabled="False" x:Name="BrowseDestinationButton" Click="BrowseDestinationButton_OnClick" Grid.Row="4" Grid.Column="1" Height="30" Width="70" Content="Browse"/>
+        
+        <!-- Labels -->
+        <Label Grid.Row="1" Grid.Column="0" Height="30" Margin="20" Content="Source Directory to Mirror:"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Height="30" Margin="20" Content="Destination directory (In your dropbox):"></Label>
+
+        <!-- Textboxen -->
+        <TextBox x:Name="SourcePathTextBox"      Grid.Row="2" Grid.Column="0" Height="20" Margin="20"></TextBox>
+        <TextBox x:Name="DestinationPathTextBox" Grid.Row="4" Grid.Column="0" Height="20" Margin="20"></TextBox>
+        
+    </Grid>
+</Window>
