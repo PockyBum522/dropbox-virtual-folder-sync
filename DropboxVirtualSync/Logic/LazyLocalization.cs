@@ -1,7 +1,7 @@
 ﻿using System;
 using DropboxVirtualSync.Views;
 
-namespace DropboxVirtualSync.Logistics
+namespace DropboxVirtualSync.Logic
 {
     public class LazyLocalization
     {

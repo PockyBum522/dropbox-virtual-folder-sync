@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using DropboxVirtualSync.Dokany;
-using DropboxVirtualSync.Logistics;
+using DropboxVirtualSync.Logic;
 
 namespace DropboxVirtualSync.Views
 {
@@ -48,12 +48,22 @@ namespace DropboxVirtualSync.Views
 
         private void BrowseSourceButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var userSelectedPath = new FolderBrowser().BrowseForFolderPath();
+
+            if (string.IsNullOrEmpty(userSelectedPath) == false)
+            {
+                SourcePathTextBox.Text = userSelectedPath;
+            } 
         }
 
         private void BrowseDestinationButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var userSelectedPath = new FolderBrowser().BrowseForFolderPath();
+
+            if (string.IsNullOrEmpty(userSelectedPath) == false)
+            {
+                DestinationPathTextBox.Text = userSelectedPath;
+            } 
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls;
+using Microsoft.Win32;
 
-namespace DropboxVirtualSync.Views
+namespace DropboxVirtualSync.Logic
 {
     public class MainWindowLogic
     {
