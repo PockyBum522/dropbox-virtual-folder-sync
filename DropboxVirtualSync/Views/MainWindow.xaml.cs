@@ -65,5 +65,12 @@ namespace DropboxVirtualSync.Views
                 DestinationPathTextBox.Text = userSelectedPath;
             } 
         }
+
+        private void MenuItem_LicenseKey_OnClick(object sender, RoutedEventArgs e)
+        {
+            LicenseKey licenseKey = new LicenseKey();
+            licenseKey.Show();
+        }
+        
     }
 }
