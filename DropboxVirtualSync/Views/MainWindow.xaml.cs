@@ -68,7 +68,7 @@ namespace DropboxVirtualSync.Views
 
         private void MenuItem_LicenseKey_OnClick(object sender, RoutedEventArgs e)
         {
-            LicenseKey licenseKey = new LicenseKey();
+            var licenseKey = new LicenseKey();
             licenseKey.Show();
         }
         

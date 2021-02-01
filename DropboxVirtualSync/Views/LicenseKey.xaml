@@ -20,11 +20,11 @@
         
         <TextBox Grid.Row="1" Grid.Column="0" Margin="5 0 0 0"></TextBox>
         <Button 
-            x:Name="UseLicenseKey" 
+            x:Name="UseLicenseKeyButton" 
             Grid.Row="1" 
             Grid.Column="1" 
             Content="Use Key" 
             Margin="0 0 5 0"
-            Click="UseLicenseKey_OnClick" />
+            Click="UseLicenseKeyButton_OnClick" />
     </Grid>
 </Window>

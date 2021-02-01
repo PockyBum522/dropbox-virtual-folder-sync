@@ -10,7 +10,7 @@ namespace DropboxVirtualSync.Views
             InitializeComponent();
         }
 
-        private void UseLicenseKey_OnClick(object sender, RoutedEventArgs e)
+        private void UseLicenseKeyButton_OnClick(object sender, RoutedEventArgs e)
         {
             throw new System.NotImplementedException();
         }

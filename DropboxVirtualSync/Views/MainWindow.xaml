@@ -42,31 +42,23 @@
         <GroupBox Grid.Row="1" Grid.Column="0" Header="Source Directory to Mirror:">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="2" x:Name="SourcePathTextBox" Height="30" Margin="0"></TextBox>
-                <Button x:Name="BrowseSourceButton" Click="BrowseSourceButton_OnClick" Grid.Row="2" Grid.Column="1" Height="30" Width="70" Content="Browse"/>
+                <TextBox Grid.Column="0" x:Name="SourcePathTextBox" Height="30" Margin="0"></TextBox>
+                <Button Grid.Column="2" x:Name="BrowseSourceButton" Click="BrowseSourceButton_OnClick" Height="30" Width="70" Content="Browse"/>
             </Grid>
         </GroupBox>
-        <GroupBox Padding="5" Grid.Row="2" Grid.Column="0" Header="Destination Directory (In your dropbox):">
+        <GroupBox Grid.Row="2" Grid.Column="0" Header="Destination Directory (In your dropbox):">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="2" x:Name="DestinationPathTextBox" Height="30" Margin="0"></TextBox>
-                <Button x:Name="BrowseDestinationButton" Click="BrowseDestinationButton_OnClick" Grid.Row="2" Grid.Column="1" Height="30" Width="70" Content="Browse"/>
+                <TextBox Grid.Column="0" x:Name="DestinationPathTextBox" Height="30" Margin="0"></TextBox>
+                <Button Grid.Column="2" x:Name="BrowseDestinationButton" Click="BrowseDestinationButton_OnClick"   Height="30" Width="70" Content="Browse"/>
             </Grid>
         </GroupBox>
 

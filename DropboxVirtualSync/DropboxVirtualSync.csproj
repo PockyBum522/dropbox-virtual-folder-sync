@@ -20,4 +20,9 @@
       </ApplicationDefinition>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\Images\PunDogPlaceholder" />
+      <Resource Include="Assets\Images\PunDogPlaceholder" />
+    </ItemGroup>
+
 </Project>
